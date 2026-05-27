@@ -1,0 +1,16 @@
+{
+  "name": "Calculateur Énergie Solaire",
+  "short_name": "Calcul Solaire",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "icons": [
+    {
+      "src": "res/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+

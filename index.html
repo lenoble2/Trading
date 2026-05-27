@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur Énergie Solaire - Lean Pay</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="manifest" href="manifest.json">
+
+</head>
+<body>
+    <div class="container">
+        <h2>Bilan Énergétique Solaire</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>APPAREILS</th>
+                    <th>PUISS. (W)</th>
+                    <th>NOMBRE</th>
+                    <th>DURÉE (h)</th>
+                    <th>ÉNERGIE (Wh)</th>
+                </tr>
+            </thead>
+<tbody id="table-body">
+    <tr class="header-row">
+        <td colspan="5">
+            Charges Non Inductives 
+            <button type="button" class="add-btn" onclick="addNewRow('table-body')">+</button>
+        </td>
+        <td id="total-non-inductive" style="font-weight: bold; background: #eee;">0</td>
+    </tr>
+</tbody>
+<tbody id="inductive-body">
+    <tr class="header-row">
+        <td colspan="5">
+            Charges Inductives 
+            <button type="button" class="add-btn" onclick="addNewRow('inductive-body')">+</button>
+        </td>
+        <td id="total-inductive" style="font-weight: bold; background: #eee;">0</td>
+    </tr>
+</tbody>
+
+            <tfoot>
+                <tr class="total-row">
+                    <td colspan="5">Énergie totale consommée par Jour (Ej) en Wh</td>
+                    <td id="total-energy">0</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <div class="panel-section">
+    <h3>Choix des panneaux</h3>
+    <div class="input-group">
+        <label>Entrer la puissance panneau choisie (W) :</label>
+        <input type="number" id="panel-pwr" value="500" oninput="calculatePanels()">
+    </div>
+    
+    <div class="result-box">
+        <p>Nombre de panneaux photovoltaïques utile : <span id="nb-panneaux">0</span> plaques</p>
+        <p>Tension utile du système : <span id="system-volt">--</span> V</p>
+        <p id="serie-info">Analyse de la configuration...</p>
+    </div>
+</div>
+
+
+<div class="panel-section">
+    <h3>Choix du régulateur de tension</h3>
+    
+    <div class="input-group">
+        <label>Tension utile du système (V) :</label>
+        <input type="number" id="system-volt-input" value="24" oninput="calculerRegulateur()">
+    </div>
+
+    <div class="input-group">
+        <label>Open-circuit voltage (Voc) de la plaque (V) :</label>
+        <input type="number" id="voc-input" value="45" oninput="calculerRegulateur()">
+    </div>
+
+    <div class="input-group">
+        <label>Short-circuit current (Isc) de la plaque (A) :</label>
+        <input type="number" id="isc-input" value="10" oninput="calculerRegulateur()">
+    </div>
+    
+    <div class="result-box">
+        <p>Tension max supportée par le régulateur : <span id="res-tension">0</span> V</p>
+        <p>Intensité max supportée par le régulateur : <span id="res-intensite">0</span> A</p>
+        <p id="serie-info" style="font-size: 0.85em; color: #666; margin-top: 10px;">
+            Calcul basé sur la configuration du système et Voc.
+        </p>
+    </div>
+    
+</div>
+
+
+    <div class="panel-section">
+    <h3>Calcul du nombre de batterie</h3>
+    
+    <div class="result-box">
+        <!-- Utilisation des bons IDs ici -->
+        <p>Nombre de batterie en série: <span id="res-bat-serie">0</span></p>
+        <p>Nombre de batterie en parallèle: <span id="res-bat-paral">0</span></p>
+        <p>Total batteries: <span id="res-bat-total">0</span></p>
+        <p id="bat-info" style="font-size: 0.85em; color: #666;"></p>
+    </div>
+</div>
+
+    
+<div class="panel-section">
+    <h3>Puissance de l'Onduleur ou convertisseur</h3>
+    
+    <div class="result-box">
+        <p>Plage recommandée : <span id="res-onduleur" style="font-weight: bold; color: green;">0 - 0</span> </p>
+        <p id="onduleur-info" style="font-size: 0.85em; color: #666;"></p>
+    </div>
+</div>
+
+
+
+    <div class="panel-section">
+    <h3>Clacul longueur des câbles </h3>
+    
+ <div class="result-box">
+<div class="cable-row">
+    <label>(S1) Longueur Panneau-Régulateur (m) :</label>
+    <input type="number" id="long-s1" value="7" oninput="calculerSections()">
+    <span>Câble de : <b id="res-s1">--</b></span>
+</div>
+
+<div class="cable-row">
+    <label>(S2) Longueur Régulateur-Onduleur (m) :</label>
+    <input type="number" id="long-s2" value="10" oninput="calculerSections()">
+    <span>Câble de : <b id="res-s2">--</b></span>
+</div>
+ 
+<div class="cable-row">
+    <label>(S3) Longueur Onduleur-Batterie (m) :</label>
+    <input type="number" id="long-s3" value="4" oninput="calculerSections()">
+    <span>Cable de : <b id="res-s3">--</b></span>
+</div>
+</div>
+    </div>
+
+    <script src="script.js"></script>
+    
+        <div class="footer">
+        <p>© 2024 - 2026 Lean, v3.5.1</p>
+        <p>Développé par LENOBLE Studio</p>
+    </div>
+
+
+
+    
+</body>
+</html>
+

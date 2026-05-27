@@ -1,0 +1,100 @@
+body { 
+    font-family: Arial, sans-serif; 
+    background-color: #f4f4f9; 
+    padding: 10px; 
+    margin: 0;
+}
+
+.container { 
+    max-width: 900px; 
+    margin: auto; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
+
+/* --- TABLEAUX (Ajustement Colonnes) --- */
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 10px; 
+    table-layout: fixed; /* Force le respect des largeurs */
+}
+
+th, td { border: 1px solid #ccc; padding: 5px; overflow: hidden; }
+th { background-color: #fde2d1; font-size: 0.85em; text-align: center; }
+
+/* Largeurs des colonnes */
+table th:nth-child(1), table td:nth-child(1) { width: 10px; } /* N° réduit */
+table th:nth-child(2), table td:nth-child(2) { width: 70px; }  /* Appareil élargi */
+table th:nth-child(3), table th:nth-child(4), table th:nth-child(5) { width: 45px; } /* Champs numériques compacts */
+table th:nth-child(6), table td:nth-child(6) { width: 55px; } /* Énergie */
+
+input { 
+    width: 90%; 
+    padding: 4px; 
+    box-sizing: border-box; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* --- LIGNES ET BOUTONS --- */
+.header-row { background-color: #e8f5e9; font-weight: bold; color: #2e7d32; }
+.add-btn { background-color: #4CAF50; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; }
+.del-btn { background-color: #f44336; color: white; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; }
+
+/* --- BLOCS VERTS (Résultats & Câbles) --- */
+.panel-section, .result-box {
+    background-color: #f1f8f0;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid #4CAF50;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.panel-section h3 {
+    margin: 0 0 15px 0;
+    color: #2e7d32;
+    font-size: 1.2em;
+}
+
+/* --- LIGNES DE CÂBLES --- */
+.cable-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.cable-row label {
+    flex: 2;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.cable-row input {
+    width: 60px;
+    border: 1px solid #4caf50;
+    text-align: center;
+}
+
+.cable-row span {
+    flex: 1;
+    font-weight: bold;
+    color: #2e7d32;
+    text-align: right;
+    white-space: nowrap;
+}
+
+th { 
+    background-color: #fde2d1; 
+    font-size: 0.75em; /* Réduit la taille de la police */
+    padding: 4px 2px;  /* Réduit l'espace autour du texte */
+    line-height: 1.2;  /* Resserre l'interligne */
+    white-space: normal; /* Permet le retour à la ligne si besoin */
+}
+
